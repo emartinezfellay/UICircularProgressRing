@@ -64,7 +64,7 @@ public struct UICircularTimerRingFormatter: UICircularRingValueFormatter {
     /// formats the value of the ring using the date components formatter with given units/style
     public func string(for value: Any) -> String? {
         guard let value = value as? CGFloat else { return nil }
-        return formatter.string(from: value.interval + 1)
+        return formatter.string(from: value.interval + 1000)
     }
 }
 
