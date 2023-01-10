@@ -64,7 +64,7 @@ public struct UICircularTimerRingFormatter: UICircularRingValueFormatter {
     /// formats the value of the ring using the date components formatter with given units/style
     public func string(for value: Any) -> String? {
         guard let value = value as? CGFloat else { return nil }
-        return formatter.string(from: value.interval + 1000)
+        return formatter.string(from: value.interval)
     }
 }
 
@@ -152,16 +152,16 @@ public struct UICircularProgressRingFormatter: UICircularRingValueFormatter {
 
         if rightToLeft {
             if showFloatingPoint {
-                return "\(valueIndicator)" + String(format: "%.\(decimalPlaces)f", value)
+                return "\(valueIndicator)" + String(format: "%.\(decimalPlaces)f", value+1)
             } else {
-                return "\(valueIndicator)\(Int(value))"
+                return "\(valueIndicator)\(Int(value+1))"
             }
 
         } else {
             if showFloatingPoint {
-                return String(format: "%.\(decimalPlaces)f", value) + "\(valueIndicator)"
+                return String(format: "%.\(decimalPlaces)f", value+1) + "\(valueIndicator)"
             } else {
-                return "\(Int(value))\(valueIndicator)"
+                return "\(Int(value+1))\(valueIndicator)"
             }
         }
     }
